@@ -34,14 +34,16 @@
   #body
 ]
 
+#let cline(width: 1fr) = box(baseline: -12pt, height: 7pt, width: width, fill: PRIMARY_COLOR)
+#let titlefmt(t) = block(inset: 0pt, text(weight: "black", size: 50pt, [#cline(width: 1cm) #t #cline()]))
+
 #let sl(body, title: none, footer: true, inset: 0.5cm) = {
   let contents = [
-    #block(inset: inset, fill: SECONDARY_COLOR,  height: 100%, width: 100%, [
-      #if title != none [
-        #block(black(fill: PRIMARY_COLOR, size: 30pt, title))
-      ]
-      #body
-    ])
+    #if title != none [
+      #titlefmt(title)
+      #v(-inset)
+    ]
+    #block(inset: inset, fill: SECONDARY_COLOR,  height: 1fr, width: 100%, body)
   ]
 
   if footer [
@@ -50,6 +52,8 @@
     #_nofooter_sl(contents)
   ]
 }
+
+#let script(t, ..kwargs) = text(font: "Empyrean", ..kwargs, t)
 
 // main body
 
@@ -67,7 +71,7 @@
           #v(10pt)
           #text(tracking: 0pt)[_and their_]
           #v(0pt)
-          #text(size: 95pt, font: "Empyrean", fill: PRIMARY_COLOR)[crowns]
+          #script(size: 95pt, fill: PRIMARY_COLOR)[crowns]
         ]
 
         #v(1fr)
@@ -79,5 +83,57 @@
         #date.display(datefmt)
       ]
   )
+]
 
+#sl(title: [A dark star])[
+]
+
+#sl(title: "Outline")[
+  #grid(
+      columns: (35%, 1fr),
+      row-gutter: 1em,
+      column-gutter: 2em,
+      block(inset: 0.3cm)[
+        #text(tracking: -2pt, size: 30pt)[
+          #text(size: 40pt)[\1.]
+          #text(size: 90pt, weight: "black")[Black holes]
+        ]
+      ],
+      [
+        #v(50pt)
+        #set text(top-edge: "ascender")
+        // maybe do this as a cold opening?
+        0. #strike[A #script(size: 28pt)[dark star]] // what they are, why interesting to study
+        1. #hl[General relativistic ray-tracing]
+          - The basic ideas
+          - Our numerical methods and techniques // auto-diff
+        2. Toy accretion models // luminet's figure
+        3. _Modelling_ #hl[spectral processes]
+          // - What we see in nature
+          // here i talk about the iron line profiles
+          // but then start to introduce the time variability things
+          //
+      ],
+      block(inset: 0.3cm)[
+        #text(tracking: -2pt, size: 30pt)[
+          #text(size: 40pt)[\2.]
+          #script(size: 95pt, fill: PRIMARY_COLOR)[crowns]
+        ]
+      ],
+      [
+        #v(50pt)
+        #set text(top-edge: "ascender")
+        1. The black hole #hl[X-ray #script(size: 28pt)[corona]]
+        2. Reverberation lags & the #hl[lamppost model]
+          // here talk about timescales probing different regions
+        3. Triumphs & contests
+          // success in fitting the 1 Zwicky 1 (Wilkins et al. 2021)
+          // De Marco et al. 2012, how lag correlates with black hole mass
+          // Kara et al. 2016: same thing for iron line
+          // polarisation results
+          - A need for geometrically extended models
+        4. A problem of compute...
+          - ... and how to #hl[solve it].
+      ]
+  )
 ]
