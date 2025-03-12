@@ -86,6 +86,20 @@
 ]
 
 #sl(title: [A dark star])[
+  #hl[Olaüs Roemer] (1676): speed of light known to be $~ 3 times 10^8 " m s"^(-1)$
+  \
+  #hl[Newtonian Gravity] (1687): escape velocity, $v_"esc" = sqrt((2 G M) \/ r).$
+
+  Reverend #hl[John Michell] (1783):
+  #block(inset: (left: 1cm), text(size: 18pt, quote[[...] a body falling from an infinite height towards it, would have acquired at its surface a greater velocity than that of light, and consequently supposing light to be attracted by the same force in proportion to its _vis inertiae_ with other bodies, #hl[all light emitted from such a body would be made to return towards it], by its own proper gravity.]))
+
+  #hl[Albert Einstein] (1915): General Theory of Relativity \
+  #hl[Karl Schwarzschild] (1915): spherically symmetric vacuum solution \
+  #hl[Subrahmanyan Chandrasekhar] (1931): there is no known force that can prevent a sufficiently massive stellar remnant from collapsing \
+  #hl[Einstein] tries to show the collapse is impossible (1939), but #hl[Robert Oppenheimer & Hartland Snyder] show it is inevitable. \
+  #hl[Jocelyn Bell Burnell] (1967): discovery of radio pulsars, used to prove existence of neutron stars. \
+  #hl[John Wheeler] (1967): coins the term "#hl[black hole]" during a lecture. \
+  #hl[Tom Bolton] (1972): discovers Cygnus X-1 orbits an invisible partner \
 ]
 
 #sl(title: "Outline")[
