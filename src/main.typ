@@ -752,8 +752,16 @@
       ],
       [
         #set align(center)
-        #uncover("9-")[#image("assets/reverberation-time-scales-zoghbi-2010.png", width: 12cm)]
-        #uncover("10-")[#image("assets/power-spectra-zoghbi-2011.png.png", width: 8cm)]
+        #uncover("9-")[#image("assets/reverberation-time-scales-zoghbi-2010.png", width: 12cm)
+        #v(-0.5cm)
+        #text(size: 12pt)[Zoghbi et al., 2010]
+        #v(-0.5cm)
+      ]
+        #uncover("10-")[#image("assets/power-spectra-zoghbi-2011.png.png", width: 8cm)
+        #v(-0.5cm)
+        #text(size: 12pt)[Zoghbi et al., 2011]
+        #v(-0.5cm)
+      ]
       ]
   )
 ]
@@ -866,34 +874,98 @@
         #align(center, image("figs/decomposition.svg", width: 90%))
       ]
   )
-  E.g. for #hl[emissivity]:
+  #uncover("2-")[E.g. for a disc, the #hl[emissivity] is:
   $
-    epsilon (r, t) = integral_0^(x_"out") = V (x) epsilon_x (r, t) dif x,
+    epsilon (r, t) = integral_0^(x_"out") A (x) epsilon_x (r, t) dif x,
   $
-  where $V(x)$ is the volume of the annulus.
+  where $A(x)$ is the area of the annulus.
+  ]
 
   #v(1fr)
-  #align(right, text(size: 18pt)[See my talk at next week's #hl[Lunch Meeting] for how this works!\ Or see Baker & Young, in prep.])
+  #uncover("3-")[#align(right, text(size: 18pt)[See my talk at next week's #hl[Lunch Meeting] for how this works!\ Or see Baker & Young, in prep.])]
 ]
 
 #sl(title: "An extended picture")[
-
+  *Emissivity* is now *time dependent*. Why? Consider 2D slice of one annulus:
+  #place(move(dy: 0.5em, dx: 2em, uncover("3-", block(width: 58%, text(size: 18pt)[
+    Sweep 2D plane around the axis to find a geodesic that hits each $phi.alt$. Plotted is the arrival time $t_("corona" -> "disc")$.
+  ]))))
+  #align(center)[
+    #animsvg(
+      read("figs/extended-picture.svg"),
+      (i, im) => only(i)[
+        #image.decode(im, width: 70%)
+      ],
+      (),
+      (hide: ("g126",), display: ("g142",)),
+      (display: ("g143", "g133")),
+      handout: HANDOUT_MODE,
+    )
+  ]
 ]
 
 #sl(title: "Time dependent emissivity")[
+  #v(1cm)
+  #align(center,
+    image("figs/time-dep-emissivity-functions.png", width: 80%)
+  )
+  #v(-10pt)
+  #align(center, block(width: 80%, grid(
+      columns: (50%, 1fr),
+      [
+        Kerr spacetime ($a=0.998$)
+      ],
+      [
+        Flat spacetime
+      ]
+  )))
 
+  The purple-orange surface is for a #hl[ring-corona] at $x=11 r_"g"$, whereas the green-pink surface is $x = 3 r_"g"$, both at $h = 5 r_"g"$.
 ]
 
-#sl(title: "Extended coronae")[
+#sl(title: "A disc-like corona")[
+  #align(center, image("figs/extended-transfer-comparison.png", width: 80%))
+  #uncover("2-")[But this assumes #hl[the whole corona responds] at the same time:]
+  #grid(
+      columns: (50%, 1fr),
+      [
+        #v(-0.5cm)
+        #uncover("2-")[#align(center, image("figs/prop-source-flucs.svg", width: 8cm))]
+      ],
+      [
+        #v(0.5cm)
+        #uncover("3-")[
+        What should the #hl[velocity profiles] be?
 
+        How do we model the #hl[interplay] with the accretion disc?
+
+        What about #hl[obscuration]?
+        ]
+      ]
+  )
 ]
 
 #sl(title: "Advantages of slow computers")[
-  // not slow programs! Computers are slow
-  We can really see what the relativistic beaming effect is
-  - appreciate the asymmetries of the system further
+  #grid(
+      columns: (60%, 1fr),
+      [
+        All of these models #hl[can be computed] on a personal computer.
 
-  - use this as a moment to look back on all the things we learn to appreciate by developing the algorithms and not just the parallelise-ability
+        Instead of trying to brute-force #hl[loads of geodesics], we focused on calculating #hl[few specific geodesics].
+
+        - Insight into the nature of the problem, an appreciation of symmetries of the system.
+        - No overhead to using the models.
+        - Reproducibility.
+
+        #v(1fr)
+        #set text(size: 15pt)
+        I am not trying to imply this is a better approach, but that there is merit beyond time-to-result.
+      ],
+      [
+        #align(center, image("figs/it-is-now-save-to-turn-off-your-computer.jpg", width: 80%))
+        #align(center, text(size: 12pt, [Wikimedia Commons]))
+      ]
+  )
 ]
 
 #sl(title: "What's next?")[
